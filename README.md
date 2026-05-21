@@ -1,45 +1,38 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Flood Detection | Sentinel-2 India</title>
-    <style>
-        body { font-family: Arial; max-width: 800px; margin: 0 auto; padding: 20px; }
-        img { max-width: 100%; border-radius: 8px; }
-        .tech { background: #f0f0f0; padding: 15px; border-radius: 5px; }
-    </style>
-</head>
-<body>
-    <h1>🌊 Flood Detection using Sentinel-2 in India</h1>
-    <p><strong>Geospatial Data Analysis Project</strong></p>
-    
-    <h2>Problem</h2>
-    <p>India's monsoon floods affect millions annually. Traditional ground surveys are slow and dangerous during active flooding.</p>
-    
-    <h2>Solution</h2>
-    <p>Automated satellite-based flood mapping using Python and Google Earth Engine, processing Sentinel-2 imagery in the cloud.</p>
-    
-    <div class="tech">
-        <h3>Technologies Used</h3>
-        <ul>
-            <li>Python + Google Earth Engine API</li>
-            <li>Sentinel-2 MSI (10m resolution)</li>
-            <li>MNDWI Water Index</li>
-            <li>Cloud masking (SCL band)</li>
-            <li>Change detection algorithms</li>
-        </ul>
-    </div>
-    
-    <h2>Results</h2>
-    <p>Successfully mapped flood extent in Assam, India comparing April 2024 (pre-flood) vs June 2024 (monsoon).</p>
-    <p>Calculated flooded area in hectares with 10-meter spatial accuracy.</p>
-    
-    <h2>Outputs</h2>
-    <ul>
-        <li>Interactive HTML map with layer toggles</li>
-        <li>GeoTIFF raster export for GIS software</li>
-        <li>Automated area statistics report</li>
-    </ul>
-    
-    <p><a href="https://github.com/gowshik-gis/flood-detection-sentinel2-india">View Code on GitHub →</a></p>
-</body>
-</html>
+# 🌊 Flood Detection using Sentinel-2 in India
+
+## Overview
+This project detects flooded areas in India using **Sentinel-2 satellite imagery** and the **Modified Normalized Difference Water Index (MNDWI)**. It compares pre-flood and during-flood satellite images to identify newly submerged land.
+
+## Tools Used (All Free)
+- **Python** — Programming language
+- **Google Earth Engine** — Cloud-based satellite data processing
+- **geemap** — Interactive mapping
+- **Sentinel-2** — ESA satellite imagery (10m resolution)
+- **MNDWI** — Water body detection index
+
+## Methodology
+1. **Data Collection**: Retrieved Sentinel-2 Level-2A images from Google Earth Engine
+2. **Cloud Masking**: Used Scene Classification Layer (SCL) to remove clouds
+3. **Index Calculation**: Applied MNDWI = (Green - SWIR1) / (Green + SWIR1)
+4. **Change Detection**: Subtracted pre-flood water mask from during-flood water mask
+5. **Area Calculation**: Computed flooded area in hectares
+
+## Key Results
+- **Location**: Assam, India
+- **Period Analyzed**: April 2024 (pre-flood) vs June 2024 (flood)
+- **Output**: Interactive HTML map + GeoTIFF export
+- **Flood Extent**: Calculated in hectares using 10m resolution data
+
+## Files
+- `flood_detection.py` — Main analysis script
+- `authenticate.py` — One-time GEE authentication
+- `outputs/flood_map.html` — Interactive map (open in browser)
+
+## How to Run
+1. Install Python 3.11
+2. `pip install -r requirements.txt`
+3. Run `authenticate.py` once
+4. Run `flood_detection.py`
+
+## Author
+Gowshik P — Aspiring Geospatial Data Analyst
